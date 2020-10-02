@@ -21,21 +21,26 @@ guessBtn.addEventListener('click', function () {
     let guess = parseInt(guessInput.value);
 
     // validate input
-    if (isNan(guess) || guess < min || guess > max) {
-        errMessage(`Please enter number between ${min} and ${max}`, `red`)
+    if (guess === NaN || guess < min || guess > max) {
+        setMessage(`Please enter number between ${min} and ${max}`, `red`)
     }
+
 
     // check if winner
     if (guess === winningNum) {
         // disable the input
         guessInput.disabled = true;
+        // change border color
+        guessInput.style.borderColor = 'green';
+        // set winner message
+        setMessage(`${winningNum} is correct!`, 'green')
     } else {
 
     }
 });
 
-// error message
-function errMessage(msg, color) {
+// set message
+function setMessage(msg, color) {
     message.style.color = color;
     message.textContent = msg;
 };

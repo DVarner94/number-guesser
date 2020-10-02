@@ -16,6 +16,13 @@ const game = document.querySelector('#game'),
 minNum.textContent = min;
 maxNum.textContent = max;
 
+// play again event listener
+game.addEventListener('mousedown', function(e){
+    if(e.target.className === 'play-again'){
+        window.location.reload()
+    }
+})
+
 // listen for a guess
 guessBtn.addEventListener('click', function () {
     let guess = parseInt(guessInput.value);
@@ -60,7 +67,11 @@ function gameOver(won, msg){
     // change border color
     guessInput.style.borderColor = color;
     // set winner message
-    setMessage(msg)
+    setMessage(msg);
+
+    // play again
+    guessBtn.value = 'Play Again';
+    guessBtn.className += 'play-again'
 }
 
 // set message
